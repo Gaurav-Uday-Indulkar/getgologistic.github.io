@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+   <!--BOOTSTRAP AND CSS-->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Goget logistic task</title>
+    <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    body{
+      padding: 10px;
+    }
+    /*STYLING NAVBAR*/
+   #mainbox{
+         font-size: ;
+         cursor: pointer;
+         transition: all .6s;
+       }
+       .sidemenu{
+         position: fixed;
+         top: 0px;
+         left: 0px;
+         height: 100%;
+         width: 0px;
+         background-color: /*#222*/white;
+         z-index: 1;
+         padding-top: 100px;
+         overflow-x: hidden;
+       }
+       .sidemenu a{
+         padding: 8px 8px 8px 64px;
+         text-decoration: none;
+         font-size: ;
+         color: /*#999*/#222;
+         display: block;
+       }
+       .sidemenu a:hover{
+         color: /*white*/ blue;
+       }
+      .sidemenu .closebtn{
+         position: absolute;
+         top: 0px;
+         right: 25px;
+         font-size: 4rem;
+         margin-left: 0px;
+       }
+  
+    .cbox{
+      /*border: 3px solid black;*/
+      height: 500vh;
+      width: auto%;
+    }
+      .dbox {
+       /* border: 2px solid blue;*/
+      }
+      
+      .btn {
+        background-color: #e3e6e6;
+        border: 1px solid grey;
+        color: blue;
+        align-content: center;
+        align-items: center;
+        margin: 5px;
+      }
+      
+      .checkbox {
+        background-color: #1869f59f;
+      }
+      
+      .dboxx {
+        margin-left: 2rem;
+        width: auto;
+      }
+      svg {
+        margin: 4px;
+      }
+   p{
+     margin-left: 20px;
+   }
+   
+   /*STYLING DROP DOWN BUTTON*/
+   .container {
+     max-width: auto;
+     margin: 0 auto;
+   }
+   .select-box {
+     width: 350px;
+   }
+   .select-box select {
+     height: 35px;
+     padding: 10px 15px;
+     line-height: 10px;
+     font-size: 11px;
+     width: 50%;
+     border: 1px solid #ccc;
+     border-radius: 8px;
+   }
+   
+   .container.em{
+     max-width: 10px;
+     margin: 0 auto;
+   }
+   .select-box.em {
+     width: 350px;
+   }
+   .select-box.em select {
+     height: 35px;
+     padding: 10px 15px;
+     line-height: 10px;
+     font-size: 11px;
+     width: 50%;
+     border: 1px solid #ccc;
+     border-radius: 8px;
+   }
+   
+   /*STYLING LOADING ICON*/
+#wrapper{
+    position:relative;
+    /*background:#333;*/
+    height:100%;
+}
+
+.profile-main-loader{
+    left: 50% !important;
+    margin-left:-100px;
+    /*position: fixed !important;*/
+   top: 50% !important;
+    margin-top: -100px;
+    margin: 50px;
+    width: 45px;
+    z-index: 9000!important;
+}
+
+.profile-main-loader .loader {
+  position: relative;
+  margin: 0px auto;
+  width: 150px;
+  height: 150px;
+}
+.profile-main-loader .loader:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.circular-loader {
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+  height: 100%;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+
+.loader-path {
+  stroke-dasharray: 150,200;
+  stroke-dashoffset: -10;
+  -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+          animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124;
+  }
+}
+@-webkit-keyframes color {
+  0% {
+    stroke: /*#70c542*/tomato;
+  }
+  40% {
+    stroke: /*#70c542*/tomato;
+  }
+  66% {
+    stroke: /*#70c542*/tomato;
+  }
+  80%, 90% {
+    stroke: /*#70c542*/tomato;
+  }
+}
+@keyframes color {
+  0% {
+    stroke: /*#70c542*/tomato;
+  }
+  40% {
+    stroke: /*#70c542*/tomato;
+  }
+  66% {
+    stroke: /*#70c542*/tomato;
+  }
+  80%, 90% {
+    stroke: /*#70c542*/tomato;
+  }
+}
+
+/*STYLING DIFFERENT BUTTONS*/
+.btn.sm{
+  background-color: #f9dc08;
+  border: 2px solid #f9dc08;
+  color: black;
+}
+.btn.dm{
+  background-color: transparent;
+  border: 2px solid #f9dc08;
+  color: black;
+}
+
+/*STYLING BLOCKQUOTE*/
+blockquote{
+  border: 1px solid #ccc;
+  width: 170px;
+  margin-left: 20px;
+  border-radius:15px;
+}
+
+/*STYLING HEADINGS TAG*/
+     h2{
+       color: blue;
+         position: absolute;
+         top: 0px;
+         left: 25px;
+         margin-left: 0px;
+       }
+       h4{
+         position: absolute;
+         top: 0px;
+         right: 20px;
+         margin-left: 0px;
+       }
+       
+       /*STYLING IMAGE*/
+       img{
+         border-radius: 50%;
+         margin: 4px;
+       }
+
+    </style>
+  </head>
+  <body>
+    <div id="mainbox" onclick="openFunction()"><b style="font-size:2.5rem">&#9776; Batch </b>Total Result - 1221
+    <h4><i class="bi bi-bell"></i>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+</svg>
+<i class="bi bi-search"></i>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> <img src="IMG-20210804-WA0010.jpg" height="18vh" width="18vh">          </h4></div>
+    <div id="menu" class="sidemenu">
+      <h2>MEDIUS</h2>
+      <a href="#"><i class="bi bi-tv"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tv" viewBox="0 0 16 16">
+  <path d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM13.991 3l.024.001a1.46 1.46 0 0 1 .538.143.757.757 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.464 1.464 0 0 1-.143.538.758.758 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.464 1.464 0 0 1-.538-.143.758.758 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.46 1.46 0 0 1 .143-.538.758.758 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3h11.991zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z"/>
+</svg>Dashbord</a>
+      <a href="#"><i class="bi bi-currency-dollar"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+</svg>Collection</a>
+      <a href="#"><i class="bi bi-layers"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layers" viewBox="0 0 16 16">
+  <path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0l3.515-1.874zM8 9.433 1.562 6 8 2.567 14.438 6 8 9.433z"/>
+</svg>Batch</a>
+      <a href="#"><i class="bi bi-people"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+</svg>Accounts</a>
+      <a href="#"><i class="bi bi-bar-chart-line"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+</svg>Daily Reports</a>
+      <a href="#"><i class="bi bi-journal-text"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+  <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+  <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+  <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+</svg>Pre-Litigation</a>
+      <a href="#"><i class="bi bi-journals"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+  <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z"/>
+  <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z"/>
+</svg>Litigation</a>
+      <a href="#"><i class="bi bi-chat-dots"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+  <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+  <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+</svg>Communication</a>
+      <a href="#"><i class="bi bi-person-circle"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>Super-Admin</a>
+      <a href="#"><i class="bi bi-people"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+</svg>Users & Role</a>
+      <a href="#" class="closebtn" onclick="closeFunction()">&times;</a>
+    </div>
+    <!--JAVASCRIPT FOR NAVBAR-->
+    <script type="text/javascript">
+    function openFunction(){
+      document.getElementById("menu").style.width="300px";
+      document.getElementById("mainbox").style.marginLeft="300px";
+     /* document.getElementById("mainbox").innerHTML="Click on cross Element And Close Menu";*/
+    }
+    function closeFunction(){
+      document.getElementById("menu").style.width="0px";
+     document.getElementById("mainbox").style.marginLeft="0px";
+   /*  document.getElementById("mainbox").innerHTML="&#9776;open";*/
+    }
+    </script>
+    <br><hr>
+    
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-6 dbox">
+
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+     <a class="btn " id="button" href="#"><i class="bi bi-sliders"></i><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+</svg>Filter</a> Ongoing data will be completed in <b>15 days</b> 
+
+        </div>
+        
+        <div class="col-sm-3 dboxx">
+
+   <button class="btn dm" id="button" href="#">
+<i class="bi bi-download"></i><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+</svg><b>Download Bulk Batch File</b></button>
+   
+  <button class="btn sm" id="button" href="#">
+<i class="bi bi-upload"></i>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+</svg><b>Upload New Batch File</b></button>
+        </div>
+        
+        <div class="col-sm-3 dboxxx">
+  <!--<button class="btn " id="button" href="#" style="border: 2px solid yellow"><b>Upload New Batch File</b></button>-->
+          
+        </div>
+       <!-- <div class="col-sm-3 dbox">4</div>-->
+        <hr>
+        <div class="col-sm-3 dbox">
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span><b>Batch No.4</b><br><br>
+  <p>Ref-May_Batch_File<br>29th May, 2021</p>
+          
+        </div>
+        
+        <div class="col-sm-3 dbox">
+          
+          <div class="container-fluid">
+            <div class="select-box">
+              <select>
+                <option><b>All</b></option>
+                <option>select 1</option>
+                <option>select 2</option>
+                <option>select 3</option>
+                <option>select 4</option>
+              </select>
+            </div>
+          </div>
+ <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-3">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>     </th>
+                <th>Calls</th>
+                <th>PTP</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <td>10,000 Accounts</td>
+                <td style="color:blue">30%</td>
+                <td style="color:blue">77%</td>
+              </tr>
+              <tr>
+                <td>10.5 Cr. Value</td>
+                <td style="color:blue">80%</td>
+                <td style="color:blue">80%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+          
+        </div>
+        
+        <div class="col-sm-3 dbox">
+<div id="wrapper">
+    
+<div class="profile-main-loader">
+  <div class="loader">
+    <svg class="circular-loader"viewBox="25 25 50 50" >
+      <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#70c542" stroke-width="2" />
+    </svg>
+  </div>
+</div>
+</div>
+
+        </div>
+        
+        <div class="col-sm-3 dbox">
+          <b style="margin-left:20px">Action</b>
+   <div class="container-fluid em">
+            <div class="select-box em">
+              <select>
+                <option><b>Select</b></option>
+                <option>select 1</option>
+                <option>select 2</option>
+                <option>select 3</option>
+                <option>select 4</option>
+              </select>
+            </div>
+          </div>
+          <p>You can download row one by one.</p>
+          
+       </div>
+        <hr>
+        
+        <div class="col-sm-3 dbox">
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span><b>Batch No.3</b><br><br>
+  <p>Ref-May_Batch_File_New<br>27th May, 2021</p>
+          
+        </div>
+        
+        <div class="col-sm-3 dbox">
+          
+            <div class="container-fluid">
+            <div class="select-box">
+              <select>
+                <option><b>All</b></option>
+                <option>select 1</option>
+                <option>select 2</option>
+                <option>select 3</option>
+                <option>select 4</option>
+              </select>
+            </div>
+          </div>
+ <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 py-3">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>     </th>
+                <th>Calls</th>
+                <th>PTP</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <td>10,000 Accounts</td>
+                <td style="color:blue">30%</td>
+                <td style="color:blue">77%</td>
+              </tr>
+              <tr>
+                <td>10.5 Cr. Value</td>
+                <td style="color:blue">80%</td>
+                <td style="color:blue">80%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+          
+        </div>
+        
+        <div class="col-sm-3 dbox">
+          
+<div id="wrapper">
+    
+<div class="profile-main-loader">
+  <div class="loader">
+    <svg class="circular-loader"viewBox="25 25 50 50" >
+      <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#70c542" stroke-width="2" />
+    </svg>
+  </div>
+</div>
+    
+</div>
+          
+        </div>
+        <div class="col-sm-3 dbox">
+          
+   <b style="margin-left:20px">Action</b>
+  <div class="container-fluid em">
+            <div class="select-box em">
+              <select>
+                <option><b>Select</b></option>
+                <option>select 1</option>
+                <option>select 2</option>
+                <option>select 3</option>
+                <option>select 4</option>
+              </select>
+            </div>
+          </div><br>
+          <blockquote>
+            <p>Download Original Data <br>Download Report</p>
+          </blockquote>
+          
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
